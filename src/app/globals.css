@@ -1,108 +1,154 @@
 :root {
-    --primary-color: #ff0000;
-    --secondary-color: #00ff00;
-    --Cherry-Red: #C72C49;
-    --Golden-Yellow: #FCE38A;
-    --Forest-Green:#84A94B;
-    --White:#ffffff;
-    --Deep-Purple:#6F42C1;
-    --Teal:#00BDBE;
-    --Tangerine-Orange:#F76C51;
-    --Black:#000;
-    --Navy-Blue:#001F3F;
-    --Light-Green:#95E066;
-}
-*,*::after,*::before{
-    padding:0;
-    margin: 0;
-    box-sizing: border-box;
+  --primary-color: #ff0000;
+  --secondary-color: #00ff00;
+  --Cherry-Red: #C72C49;
+  --Golden-Yellow: #FCE38A;
+  --Forest-Green: #84A94B;
+  --White: #ffffff;
+  --Deep-Purple: #6F42C1;
+  --Teal: #00BDBE;
+  --Tangerine-Orange: #F76C51;
+  --Black: #000;
+  --Navy-Blue: #001F3F;
+  --Light-Green: #95E066;
 }
 
-a{
-    text-decoration: none;
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-ul{
-    list-style-type: none;
+a {
+  text-decoration: none;
 }
 
-li{
-    list-style: none;
+ul {
+  list-style-type: none;
 }
 
-.container{
-    max-width: 1360px;
-    width:100%;
-    margin: 0 auto;
+li {
+  list-style: none;
 }
 
-.padding-lf-rt{
-    padding: 0px 20px;
+.container {
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.padding-lf-rt {
+  padding: 0px 20px;
 }
 
 .padding-lf-rt._main_container {
-    max-width: 650px;
-    width: 96%;
-    background: #fff;
-    margin: 20px auto;
-    border-radius: 6px;
-    padding: 15px 30px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  max-width: 650px;
+  width: 96%;
+  background: #fff;
+  margin: 20px auto;
+  border-radius: 6px;
+  padding: 15px 30px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
+
 ._Rgst_p_1 {
-    width: 85%;
-    margin: 0px auto;
-  }
+  width: 85%;
+  margin: 0px auto;
+}
+
 ._Log_in1 {
-    text-align: center;
+  text-align: center;
 }
+
 ._Log_in1 h2 {
-    padding: 10px;
-    border-bottom: 1px dashed var(--Teal);
-    margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px dashed var(--Teal);
+  margin-bottom: 15px;
 }
+
 ._Log_in2 {
-    margin-bottom: 15px;
-  }
-  ._Log_in2 label {
-    display: block;
-    text-align: left;
-    padding-left: 6px;
-    padding-bottom: 5px;
-    font-size: 17px;
-    font-weight: 400;
-  }
-  ._Log_in2 input,._Log_in2 textarea {
-    display: block;
-    width: 100%;
-    padding: 15px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--Teal);
-    box-shadow: #00BDBE47 0px 1px 2px 0px, rgba(60, 64, 67, 0.1) 0px 2px 6px 2px;
-    height: 55px;
-  }
+  margin-bottom: 15px;
+}
 
-  ._Log_in2 textarea{
-    height: 80px;
-    resize: none;
-  }
-  ._Log_in3 {
-    margin: 25px 0px 15px;
-  }
-  ._Log_in3 button {
-    background: var(--Teal);
-    width: 100%;
-    display: block;
-    border: none;
-    color: #fff;
-    padding: 15px 6px;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
+._Log_in2 label {
+  display: block;
+  text-align: left;
+  padding-left: 6px;
+  padding-bottom: 5px;
+  font-size: 17px;
+  font-weight: 400;
+}
 
-  ._Log_in3 button:hover{
-    opacity: .8;
-  }
+._Log_in2 input,
+._Log_in2 textarea {
+  display: block;
+  width: 100%;
+  padding: 15px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--Teal);
+  box-shadow: #00BDBE47 0px 1px 2px 0px, rgba(60, 64, 67, 0.1) 0px 2px 6px 2px;
+  height: 55px;
+}
+
+._Log_in2 textarea {
+  height: 80px;
+  resize: none;
+}
+
+._Log_in3 {
+  margin: 25px 0px 15px;
+}
+
+._Log_in3 button {
+  background: var(--Teal);
+  width: 100%;
+  display: block;
+  border: none;
+  color: #fff;
+  padding: 15px 6px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+._Log_in3 button:hover {
+  opacity: .8;
+}
+
+._lo_sgn_btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--Cherry-Red);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+._Log_in2 input:user-valid,._Log_in2 input:valid {
+  border: 2px solid var(--secondary-color)
+}
+
+._Log_in2 input:user-invalid {
+  border: 2px solid var(--primary-color)
+}
+
+form:valid ._Log_in2 input {
+  border-color:var(--Teal);
+  /* Revert to default border color */
+}
+
+/* .signupForm-error-input {
+  border: 1px solid red;
+}
+
+.signupForm-error-message {
+  color: red;
+  font-weight: 400;
+  margin-top: 2px;
+  display: inline-block;
+  font-size: 14px;
+} */

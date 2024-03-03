@@ -1,14 +1,12 @@
 import React from 'react'
-import Login from '../_components/Login'
-import SignUp from '../_components/SignUp'
+import Registry from '../_components/Registry'
 
 const page = () => {
     return (
         <>
             <main className='padding-lf-rt _main_container'>
                 <div className='_Rgst_p_1'>
-                    <Login />
-                    {/* <SignUp /> */}
+                   <Registry />
                 </div>
             </main>
         </>
