@@ -128,27 +128,3 @@ li {
   font-weight: 400;
 }
 
-._Log_in2 input:user-valid,._Log_in2 input:valid {
-  border: 2px solid var(--secondary-color)
-}
-
-._Log_in2 input:user-invalid {
-  border: 2px solid var(--primary-color)
-}
-
-form:valid ._Log_in2 input {
-  border-color:var(--Teal);
-  /* Revert to default border color */
-}
-
-/* .signupForm-error-input {
-  border: 1px solid red;
-}
-
-.signupForm-error-message {
-  color: red;
-  font-weight: 400;
-  margin-top: 2px;
-  display: inline-block;
-  font-size: 14px;
-} */

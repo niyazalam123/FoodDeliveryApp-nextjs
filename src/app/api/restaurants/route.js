@@ -6,5 +6,13 @@ export async function GET(res) {
     await connectDB();
     const data = await restaurantSchema.find();
     console.log(data);
-    return NextResponse.json({result:true})
+    return NextResponse.json({ result: true })
+}
+
+export async function POST(requset) {
+    let payload = await requset.json();
+    await connectDB();
+    const schemaRestaurents = new restaurantSchema(payload);
+    const result = await schemaRestaurents.save();
+    return NextResponse.json({ result: result, success: true })
 }
