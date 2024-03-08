@@ -9,7 +9,7 @@ export interface signUpForm {
     createdAt: Date;
 }
 
-export interface userDetails {
+export interface userDetailsType {
     name: string;
     email: string;
     number: string;

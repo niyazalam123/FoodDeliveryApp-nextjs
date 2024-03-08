@@ -116,3 +116,9 @@
   font-size: 22px;
   cursor: pointer;
 }
+
+.error {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--primary-color);
+}

@@ -20,6 +20,8 @@ const validate = {
 const SignUp = () => {
     const [loaderShow, setLoaderShow] = useState(false);
     const router = useRouter();
+    const [error,setError] = useState(false);
+    const [passwordMatch,setPasswordMatch] = useState(false);
     const [restaurentsSignup, setRestaurentsSignup] = useState<signUpForm>({
         name: "",
         email: "",
@@ -42,6 +44,20 @@ const SignUp = () => {
     }
 
     async function handleSignUp() {
+        if (restaurentsSignup.password!==restaurentsSignup.ConfirmPassword){
+            setPasswordMatch(true);
+            return;
+        }else{
+            setPasswordMatch(false);
+        }
+
+        if (!restaurentsSignup.name || !restaurentsSignup.password || !restaurentsSignup.number || !restaurentsSignup.address || !restaurentsSignup.email || !restaurentsSignup.ConfirmPassword || !restaurentsSignup.city){
+            setError(true);
+            return;
+        }
+        else{
+            setError(false);
+        }
         setLoaderShow(true);
         try {
             const userData = await fetch("http://localhost:3000/api/restaurants", {
@@ -80,6 +96,9 @@ const SignUp = () => {
                         value={restaurentsSignup.name}
                         onChange={handleFormData}
                     />
+                    {
+                        error && !restaurentsSignup.name && <span className='error'>name is required</span>
+                    }
                 </div>
                 <div className='_Log_in2'>
                     <label htmlFor="_one2">Enter Email</label>
@@ -91,6 +110,9 @@ const SignUp = () => {
                         value={restaurentsSignup.email}
                         onChange={handleFormData}
                     />
+                    {
+                        error && !restaurentsSignup.email && <span className='error'>email is required</span>
+                    }
                 </div>
                 <div className='_Log_in2'>
                     <label htmlFor="_one3">Enter Number</label>
@@ -102,6 +124,9 @@ const SignUp = () => {
                         value={restaurentsSignup.number}
                         onChange={handleFormData}
                     />
+                    {
+                        error && !restaurentsSignup.number && <span className='error'>number is required</span>
+                    }
                 </div>
                 <div className='_Log_in2'>
                     <label htmlFor="_one4">Enter Password</label>
@@ -113,6 +138,12 @@ const SignUp = () => {
                         value={restaurentsSignup.password}
                         onChange={handleFormData}
                     />
+                    {
+                        passwordMatch && <span className='error'>Password does not matched!</span>
+                    }
+                    {
+                        error && !restaurentsSignup.password && <span className='error'>Password is required</span>
+                    }
                 </div>
                 <div className='_Log_in2'>
                     <label htmlFor="_one5">Enter Confirm Password</label>
@@ -124,6 +155,12 @@ const SignUp = () => {
                         value={restaurentsSignup.ConfirmPassword}
                         onChange={handleFormData}
                     />
+                    {
+                        passwordMatch && <span className='error'>Password does not matched!</span>
+                    }
+                    {
+                        error && !restaurentsSignup.ConfirmPassword && <span className='error'>confirm Password is required</span>
+                    }
                 </div>
                 <div className='_Log_in2'>
                     <label htmlFor="_one6">Enter City</label>
@@ -135,6 +172,9 @@ const SignUp = () => {
                         value={restaurentsSignup.city}
                         onChange={handleFormData}
                     />
+                    {
+                        error && !restaurentsSignup.city && <span className='error'>city is required</span>
+                    }
                 </div>
                 <div className='_Log_in2'>
                     <label htmlFor="_one7">Enter Address</label>
@@ -145,6 +185,9 @@ const SignUp = () => {
                         value={restaurentsSignup.address}
                         onChange={handleFormData}
                     ></textarea>
+                    {
+                        error && !restaurentsSignup.address&& <span className='error'>address is required</span>
+                    }
                 </div>
                 <div className='_Log_in3'>
                     <button onClick={handleSignUp} disabled={loaderShow ? true : false} style={{ cursor: `${loaderShow ? "no-drop" : "pointer"}` }}>{loaderShow ? <BtnLoader /> : "Sign Up"}</button>
