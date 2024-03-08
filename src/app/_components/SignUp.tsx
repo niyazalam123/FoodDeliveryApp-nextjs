@@ -1,18 +1,12 @@
 "use client";
 import React, { useState } from 'react';
+import {signUpForm} from "@/app/_components/Types";
+import BtnLoader from "@/app/_components/BtnLoader";
 
-
-interface signUpForm {
-    name: string;
-    email: string;
-    number: string;
-    password: string;
-    ConfirmPassword: string;
-    city: string;
-    address: string;
-}
 
 const SignUp = () => {
+    const date = new Date();
+    const [loaderShow,setLoaderShow] = useState(false);
     const [restaurentsSignup, setRestaurentsSignup] = useState<signUpForm>({
         name: "",
         email: "",
@@ -21,6 +15,7 @@ const SignUp = () => {
         ConfirmPassword: "",
         city: "",
         address: "",
+        createdAt: date,
     })
 
     function handleFormData(e: any) {
@@ -34,14 +29,22 @@ const SignUp = () => {
     }
 
     async function handleSignUp() {
-        const userData = await fetch("http://localhost:3000/api/restaurants",{
-            method:"POST",
-            body:JSON.stringify({...restaurentsSignup,createdAt:new Date()})
-        })
-        const result = await userData.json();
+        setLoaderShow(true);
+        try {
+            const userData = await fetch("http://localhost:3000/api/restaurants", {
+                method: "POST",
+                body: JSON.stringify(restaurentsSignup)
+            });
+            
+        } catch (error) {
+            console.log("something went wrong");
+            setLoaderShow(false);
+        }finally{
+            setLoaderShow(false);
+        }
     }
 
-   
+
     return (
         <>
             <div className='_Log_in1'>
@@ -122,7 +125,7 @@ const SignUp = () => {
                     ></textarea>
                 </div>
                 <div className='_Log_in3'>
-                    <button onClick={handleSignUp}>Sign Up</button>
+                    <button onClick={handleSignUp} disabled = {loaderShow ? true : false} style={{cursor:`${loaderShow?"no-drop":"pointer"}`}}>{loaderShow ?<BtnLoader /> : "Sign Up"}</button>
                 </div>
             </div>
         </>

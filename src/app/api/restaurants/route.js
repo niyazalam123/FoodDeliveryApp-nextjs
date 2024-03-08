@@ -10,9 +10,13 @@ export async function GET(res) {
 }
 
 export async function POST(requset) {
-    let payload = await requset.json();
-    await connectDB();
-    const schemaRestaurents = new restaurantSchema(payload);
-    const result = await schemaRestaurents.save();
-    return NextResponse.json({ result: result, success: true })
+    try {
+        let payload = await requset.json();
+        await connectDB();
+        const schemaRestaurents = new restaurantSchema(payload);
+        const result = await schemaRestaurents.save();
+        return NextResponse.json({ result: result, success: true }, { status: 200 })
+    } catch (error) {
+        return NextResponse.json({ error: "something went wrong", success: false }, { status: 404 })
+    }
 }

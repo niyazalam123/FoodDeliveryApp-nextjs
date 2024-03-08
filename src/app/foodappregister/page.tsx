@@ -1,12 +1,13 @@
-import React from 'react'
-import Registry from '../_components/Registry'
+import React from 'react';
+import Registry from '../_components/Registry';
+import "./logSign.css";
 
 const page = () => {
     return (
         <>
             <main className='padding-lf-rt _main_container'>
                 <div className='_Rgst_p_1'>
-                   <Registry />
+                    <Registry />
                 </div>
             </main>
         </>

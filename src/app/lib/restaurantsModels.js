@@ -7,7 +7,7 @@ const restaurantModel = new mongoose.Schema({
     city:String,
     address:String,
     number:String,
-    createdAt:String
+    createdAt:String,
 });
 
 export const restaurantSchema=mongoose.models.restaurants
