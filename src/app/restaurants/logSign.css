@@ -84,3 +84,35 @@
   font-size: 15px;
   font-weight: 400;
 }
+
+._Header2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+}
+._Header2 li h1 a {
+  color: var(--Cherry-Red);
+  font-weight: 700;
+}
+._Header6 {
+  display: flex;
+  align-items: center;
+}
+._Header6 li {
+  padding: 0px 15px;
+  font-size: 19px;
+  font-weight: 500;
+  cursor: pointer;
+}
+._Header6 li a {
+  color: #000;
+}
+._Header6 button {
+  background: transparent;
+  border: none;
+  color: #000;
+  font-weight: 500;
+  font-size: 22px;
+  cursor: pointer;
+}

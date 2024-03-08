@@ -1,12 +1,25 @@
 "use client";
 import React, { useState } from 'react';
-import {signUpForm} from "@/app/_components/Types";
+import { signUpForm } from "@/app/_components/Types";
 import BtnLoader from "@/app/_components/BtnLoader";
+import { useRouter } from 'next/navigation';
 
+
+const date = new Date();
+const validate = {
+    name: "",
+    email: "",
+    number: "",
+    password: "",
+    ConfirmPassword: "",
+    city: "",
+    address: "",
+    createdAt: date,
+}
 
 const SignUp = () => {
-    const date = new Date();
-    const [loaderShow,setLoaderShow] = useState(false);
+    const [loaderShow, setLoaderShow] = useState(false);
+    const router = useRouter();
     const [restaurentsSignup, setRestaurentsSignup] = useState<signUpForm>({
         name: "",
         email: "",
@@ -35,11 +48,20 @@ const SignUp = () => {
                 method: "POST",
                 body: JSON.stringify(restaurentsSignup)
             });
-            
+
+            const response = await userData.json();
+            if (response.success) {
+                setRestaurentsSignup(validate);
+                const { result } = response;
+                delete result.password;
+                localStorage.setItem("restaurantUser", JSON.stringify(result));
+                router.push("/restaurants/dashboard");
+            }
+
         } catch (error) {
             console.log("something went wrong");
             setLoaderShow(false);
-        }finally{
+        } finally {
             setLoaderShow(false);
         }
     }
@@ -125,7 +147,7 @@ const SignUp = () => {
                     ></textarea>
                 </div>
                 <div className='_Log_in3'>
-                    <button onClick={handleSignUp} disabled = {loaderShow ? true : false} style={{cursor:`${loaderShow?"no-drop":"pointer"}`}}>{loaderShow ?<BtnLoader /> : "Sign Up"}</button>
+                    <button onClick={handleSignUp} disabled={loaderShow ? true : false} style={{ cursor: `${loaderShow ? "no-drop" : "pointer"}` }}>{loaderShow ? <BtnLoader /> : "Sign Up"}</button>
                 </div>
             </div>
         </>
