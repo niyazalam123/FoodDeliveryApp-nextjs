@@ -17,3 +17,8 @@ export interface userDetailsType {
     address: string;
     createdAt: Date;
 }
+
+export interface LoginType {
+    email:string;
+    password:string;
+}
