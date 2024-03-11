@@ -22,7 +22,7 @@ const Login = () => {
         })
     }
 
-    function handleLogin(){
+    async function handleLogin(){
         if (!login.email || !login.password){
             setError(true);
             return;
@@ -30,12 +30,23 @@ const Login = () => {
         else{
             setError(false);
         }
-
-        console.log(login);
+        try {
+            setLoader(true);
+            const res = await fetch("http://localhost:3000/api/restaurants",{
+                method:"POST",
+                body:JSON.stringify({login,login2:true})
+            });
+            const result = await res.json();
+            if(result.success){
+                alert("login successfully")
+            }
+        } catch (error) {
+            console.log("something went wrong")
+        }
+        finally{
+            setLoader(false);
+        }
     }
-    console.log(error);
-    
-
     return (
         <>
             <div className='_Log_in1'>
