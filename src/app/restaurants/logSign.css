@@ -122,3 +122,22 @@
   font-weight: 400;
   color: var(--primary-color);
 }
+._Wrapper {
+  max-width: 700px;
+  margin: 20px auto;
+  background: #fff;
+  box-shadow: 0 0 4px -2px #333;
+  padding: 20px 30px;
+  border-radius: 6px;
+}
+.file {
+  text-align: left;
+}
+.file label {
+  display: inline-block;
+  margin-right: 13px;
+}
+.file input {
+  overflow-x: hidden;
+  width: 300px;
+}
