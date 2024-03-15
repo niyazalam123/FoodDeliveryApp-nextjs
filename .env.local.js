@@ -1,1 +1,0 @@
-MONGODB_URL=mongodb+srv://mdniyaz192:5vYRxCrOOqABqeWE@cluster0.i1ih3q4.mongodb.net/fooddelavery

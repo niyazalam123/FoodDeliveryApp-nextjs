@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const uri = "mongodb+srv://mdniyaz192:5vYRxCrOOqABqeWE@cluster0.i1ih3q4.mongodb.net/fooddelavery";
+const uri = process.env.MONGODB_URL;
 let mongodbConnected
 
 if (!uri) {
