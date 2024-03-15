@@ -32,6 +32,7 @@ const AuthHeader = () => {
 
 function logout() {
     localStorage.removeItem("restaurantUser");
+    
     router.push("/restaurants");
 }
 

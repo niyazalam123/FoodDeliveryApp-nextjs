@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import { LoginType } from '../Types';
 import BtnLoader from '../BtnLoader';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
     const [loader, setLoader] = useState(false);
     const [error,setError] = useState(false);
+    const router = useRouter();
     const [login, setLogin] = useState({
         email: "",
         password: ""
@@ -36,12 +38,18 @@ const Login = () => {
                 method:"POST",
                 body:JSON.stringify({login,login2:true})
             });
-            const result = await res.json();
-            if(result.success){
-                alert("login successfully")
+            const resp = await res.json();
+            if(resp.success){
+                const {result} = resp;
+                delete result.password;
+                localStorage.setItem("restaurantUser",JSON.stringify(result));
+                router.push("/restaurants/dashboard");
+            }
+            else{
+                alert("login failed!!");
             }
         } catch (error) {
-            console.log("something went wrong")
+            console.log("something went wrong");
         }
         finally{
             setLoader(false);
