@@ -1,26 +1,57 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../restaurants/logSign.css";
+import BtnLoader from "@/app/_components/BtnLoader"
 
 const AddFoodItem = () => {
-    const [productDetails,setProductDetails] = useState({
-        name:"",
-        price:"",
-        description:"",
-        imagePath:"",
+    const [productDetails, setProductDetails] = useState({
+        name: "",
+        price: "",
+        description: "",
+        imagePath: "",
     });
+    const [btnDisabled, setBtnDisabled] = useState(false);
+    const [btnLoader, setBtnLoader] = useState(false);
 
-    function handleProducts(e:any){
-        const {name,value} = e.target;
-        setProductDetails((prev:any)=>{
-            return{
+    function handleProducts(e: any) {
+        const { name, value } = e.target;
+        setProductDetails((prev: any) => {
+            return {
                 ...prev,
-                [name]:value
+                [name]: value
             }
         })
     };
 
-    function handleProductAdd(){
-        console.log(productDetails);
+    useEffect(() => {
+        if (productDetails.name.length > 0 && productDetails.price.toString().length > 0 && productDetails.imagePath.length > 0 && productDetails.description.length > 0) {
+            setBtnDisabled(false);
+        }
+        else {
+            setBtnDisabled(true);
+        }
+    }, [productDetails])
+
+    async function handleProductAdd() {
+        try {
+            setBtnLoader(true);
+            const restaurentOwner: Storage = JSON.parse(localStorage.getItem("restaurantUser")!);
+            const resp = await fetch("/api/restaurants/foods", {
+                method: 'POST',
+                body: JSON.stringify({...productDetails,restoId:restaurentOwner._id})
+            });
+            if (resp.ok) {
+                productDetails.name="";
+                productDetails.description="";
+                productDetails.imagePath="";
+                productDetails.price=""
+                alert("data added successfully");
+            }
+        } catch (error: any) {
+            console.log("error", error.message);
+        }
+        finally {
+            setBtnLoader(false);
+        }
     }
 
     return (
@@ -35,7 +66,7 @@ const AddFoodItem = () => {
                             placeholder='Enter Product Name'
                             name="name"
                             value={productDetails.name}
-                             onChange={handleProducts}
+                            onChange={handleProducts}
                         />
                     </div>
                     <div className='_Log_in2'>
@@ -46,7 +77,7 @@ const AddFoodItem = () => {
                             placeholder='Enter Price'
                             name="price"
                             value={productDetails.price}
-                             onChange={handleProducts}
+                            onChange={handleProducts}
                         />
                     </div>
                     <div className='_Log_in2'>
@@ -57,7 +88,7 @@ const AddFoodItem = () => {
                             placeholder='Enter Description'
                             name="description"
                             value={productDetails.description}
-                             onChange={handleProducts}
+                            onChange={handleProducts}
                         />
                     </div>
                     <div className='_Log_in2'>
@@ -72,7 +103,7 @@ const AddFoodItem = () => {
                         />
                     </div>
                     <div className='_Log_in3'>
-                        <button onClick={handleProductAdd}>Add Food Item</button>
+                        <button onClick={handleProductAdd} disabled={btnDisabled ? true : false} style={{ cursor: btnDisabled ? "no-drop" : "pointer",opacity:btnDisabled?.8:1 }}>{btnLoader ? <BtnLoader /> : "Add Food Item"}</button>
                     </div>
                 </div>
             </div>
